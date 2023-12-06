@@ -45,6 +45,9 @@ class LTTerminadas:
 
     def vl(self):
         return self.v0_mais(self.comprimento) * (1 + self.tau_l())
+    
+    def linha_t(self, z):
+        print(f'tau: {self.tau_l()}\nROTE: {self.rote()}\nZin: {self.z_in()}\nVin: {self.v_in()}\nV0+: {self.v0_mais(z)}\nVl: {self.vl()}')
 
 
 if __name__ == '__main__':
@@ -56,6 +59,7 @@ if __name__ == '__main__':
         vss=10 * exp(pi / 6 * 1j),
         z_s=25,
     )
+    print(10 * exp(pi / 6 * 1j))
     # print(lt.tau_l)
     # print(lt.rote)
     # print(lt.tau_l())
@@ -65,4 +69,5 @@ if __name__ == '__main__':
     # print(atan(lt.vl().imag / lt.vl().real) * 180 / pi)
 
     lt2 = LTTerminadas(z0=50, zl=50 - 25j, comprimento=0.125)
-    print(lt2.z_in())
+    #print(lt2.z_in())
+    lt.linha_t(.25)

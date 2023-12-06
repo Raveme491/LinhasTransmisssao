@@ -70,7 +70,7 @@ class CabosCoaxias:
         )
 
     def velocidade_propagacao(self):
-        return 1 / sqrt(mu_0 * self.mu_r * epsilon_0 * self.e_r)
+        return round((1 / sqrt(mu_0 * self.mu_r * epsilon_0 * self.e_r)).real,2)
 
     def gama(self):
         return sqrt(
@@ -83,6 +83,8 @@ class CabosCoaxias:
                 + self.frequencia * 2 * pi * self.capacitancia_linha() * 1j
             )
         )
+    def param_dist(self):
+        print(f'R: {self.resistencia_linha()}\nL: {self.indutancia_linha()}\nC: {self.capacitancia_linha()}\nS: {self.condutancia_linha()}\nup: {self.velocidade_propagacao()}\ngamma: {self.gama()}')
 
 
 class CaboCondGemeos:
@@ -136,7 +138,10 @@ class CaboCondGemeos:
         return sqrt(self.indutancia_linha() / self.capacitancia_linha())
 
     def velocidade_propagacao(self):
-        return 1 / sqrt(mu_0 * self.mu_r * epsilon_0 * self.e_r)
+        return round((1 / sqrt(mu_0 * self.mu_r * epsilon_0 * self.e_r)).real,2)
+
+    def param_dist(self):
+        print(f'R: {self.resistencia_linha()}\nL: {self.indutancia_linha()}\nC: {self.capacitancia_linha()}\nS: {self.condutancia_linha()}\nup: {self.velocidade_propagacao()}\ngamma: {self.gama()}')
 
 
 if __name__ == '__main__':
@@ -177,4 +182,5 @@ if __name__ == '__main__':
         e_r=2.26,
         sigma_c=5.8e7,
     )
-    print(cabo3.gama())
+    #print(cabo3.gama())
+    cabo1.param_dist()
