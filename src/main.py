@@ -58,7 +58,36 @@ match inicio:
 
 
     case '2':
-        assunto = input('Quarto de onda: 1\n Casamento com indutor/capacitor: 2\n Toco paralelo: 3\n Toco serie: 4\n')
+        assunto = input('Quarto de onda: 1\n Casamento com indutor/capacitor: 2\n Toco serie: 3\n Toco paralelo: 4\n')
+        match assunto:
+            case '1':
+                z0 = float(input("Z0 (puramente resistivo): "))
+                rl = float(input("Rl (puramente resistivo): "))
+
+                casador = CasadorQuartoOnda(z0=z0, rl=rl)
+                print(f"Zs: {casador.calculo_zs()}")
+            case '2':
+                z0 = complex(input("Z0: "))
+                zl = complex(input("Zl: "))
+                freq = float(input("Frequência: "))
+                comprimento = float(input("Comprimento em lambdas: "))
+                
+                casador = CasamentoCapacitorIndutor(zl=zl, z0=z0, frequencia=freq, comprimento=comprimento)
+                casador.print_casamento()
+            case '3':
+                z0 = complex(input("Z0: "))
+                zl = complex(input("Zl: "))
+                comprimento = float(input("Comprimento em lambdas: "))
+
+                casador = TocoSerie(zl, z0, comprimento)
+                casador.print_casamento()
+            case '4':
+                z0 = complex(input("Z0: "))
+                zl = complex(input("Zl: "))
+                comprimento = float(input("Comprimento em lambdas: "))
+
+                casador = TocoSimples(zl, z0, comprimento)
+                casador.print_casamento()
     case '3':
         ...
     case _:

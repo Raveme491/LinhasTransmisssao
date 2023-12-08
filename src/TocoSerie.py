@@ -82,9 +82,11 @@ class TocoSerie:
 
         return resultados
 
-
+    def print_casamento(self):
+        resultados = self.executor()
+        for key, value in resultados.items():
+            print(key, value)
 if __name__ == '__main__':
     toco_simples = TocoSerie(zl=11 + 25j, z0=50)
     results = toco_simples.executor()
-    for key, value in results.items():
-        print(key, value)
+    toco_simples.print_casamento()

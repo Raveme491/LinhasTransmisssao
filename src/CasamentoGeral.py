@@ -58,22 +58,22 @@ class CasamentoCapacitorIndutor:
             distancia,
             z_in_normalizada,
         ) = self.calculo_carac_casamento()
-
         reatancia_corretivas = np.imag(z_in_normalizada) * self.z0 * 1j
+
         valor_cap_ind = []
-        if z_in_normalizada[0] > 0 and self.frequencia is not None:
+        if reatancia_corretivas[0] > 0 and self.frequencia is not None:
             valor_cap_ind.append(
-                self.capacitancia_necessaria(z_in_normalizada[0].imag)
+                self.capacitancia_necessaria(reatancia_corretivas[0].imag)
             )
             valor_cap_ind.append(
-                self.indutancia_necessaria(z_in_normalizada[1].imag)
+                self.indutancia_necessaria(reatancia_corretivas[1].imag)
             )
-        elif z_in_normalizada[0] < 0 and self.frequencia is not None:
+        elif reatancia_corretivas[0] < 0 and self.frequencia is not None:
             valor_cap_ind.append(
-                self.capacitancia_necessaria(z_in_normalizada[1].imag)
+                self.capacitancia_necessaria(reatancia_corretivas[1].imag)
             )
             valor_cap_ind.append(
-                self.indutancia_necessaria(z_in_normalizada[0].imag)
+                self.indutancia_necessaria(reatancia_corretivas[0].imag)
             )
         return (
             round(lambda_inicial, 3),
@@ -82,10 +82,23 @@ class CasamentoCapacitorIndutor:
             reatancia_corretivas,
             valor_cap_ind,
         )
+    
+    def print_casamento(self):
+        results = self.casamento_impedancia()
+        print('---CAPACITOR----')
+        print(f'Distância em relação a carga capacitor: ', results[2][0])
+        print(f'Módulo da impedância do capacitor: ', abs(results[3][1]))
+        print(f'Capacitância: ', results[4][0])
+
+        print('----INDUTOR----')
+        print(f'Distância em relação a carga indutor: ', results[2][1])
+        print(f'Impedância do Indutor: ', abs(results[3][0]))
+        print(f'Indutância: ', results[4][0])
 
 
 if __name__ == '__main__':
     transformador = CasamentoCapacitorIndutor(
-        z0=100, zl=35 - 50j, comprimento=0.419, frequencia=1e9
+        z0=100, zl=35 - 50j, frequencia=1e9
     )
     print(transformador.casamento_impedancia())
+    transformador.print_casamento()
