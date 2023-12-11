@@ -84,7 +84,7 @@ class CabosCoaxias:
             )
         )
     def param_dist(self):
-        print(f'R: {self.resistencia_linha()}\nL: {self.indutancia_linha()}\nC: {self.capacitancia_linha()}\nS: {self.condutancia_linha()}\nup: {self.velocidade_propagacao()}\ngamma: {self.gama()}')
+        print(f'R: {self.resistencia_linha()}\nL: {self.indutancia_linha()}\nC: {self.capacitancia_linha()}\nG: {self.condutancia_linha()}\nup: {self.velocidade_propagacao()}\ngamma: {self.gama()}')
 
 
 class CaboCondGemeos:
@@ -141,7 +141,7 @@ class CaboCondGemeos:
         return round((1 / sqrt(mu_0 * self.mu_r * epsilon_0 * self.e_r)).real,2)
 
     def param_dist(self):
-        print(f'R: {self.resistencia_linha()}\nL: {self.indutancia_linha()}\nC: {self.capacitancia_linha()}\nS: {self.condutancia_linha()}\nup: {self.velocidade_propagacao()}\ngamma: {self.gama()}')
+        print(f'R: {self.resistencia_linha()}\nL: {self.indutancia_linha()}\nC: {self.capacitancia_linha()}\nG: {self.condutancia_linha()}\nup: {self.velocidade_propagacao()}\ngamma: {self.gama()}')
 
 
 if __name__ == '__main__':

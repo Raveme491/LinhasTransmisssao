@@ -59,15 +59,6 @@ if __name__ == '__main__':
         vss=10 * exp(pi / 6 * 1j),
         z_s=25,
     )
-    print(10 * exp(pi / 6 * 1j))
-    # print(lt.tau_l)
-    # print(lt.rote)
-    # print(lt.tau_l())
-    # print(round(lt.z_in().real))
-    # print(abs(lt.vl()))
-    # print(lt.vl())
-    # print(atan(lt.vl().imag / lt.vl().real) * 180 / pi)
-
     lt2 = LTTerminadas(z0=50, zl=50 - 25j, comprimento=0.125)
     #print(lt2.z_in())
     lt.linha_t(.25)

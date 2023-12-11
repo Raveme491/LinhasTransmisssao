@@ -6,7 +6,7 @@ from TocoParalelo import TocoSimples
 from TocoSerie import TocoSerie
 from transitorios import TransitoriosDegrau
 
-inicio = input('Qual unidade deseja solucionar o problema?\n Digite:\n "1" para unidade 1\n "2" para unidade 2\n "3" para unidade 3: ')
+inicio = input('Qual unidade deseja solucionar o problema?\n Digite:\n "1" para unidade 1\n "2" para unidade 2: ')
 
 match inicio:
     case '1':
@@ -88,7 +88,5 @@ match inicio:
 
                 casador = TocoSimples(zl, z0, comprimento)
                 casador.print_casamento()
-    case '3':
-        ...
     case _:
         print("Por favor, digite um valor válido")

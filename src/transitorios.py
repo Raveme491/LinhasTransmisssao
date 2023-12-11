@@ -10,7 +10,6 @@ class TransitoriosDegrau:
         self.up = up * 3e8
         self.vs = vs
         self.comprimento = comprimento
-        self.zl = zl
 
     def calculo_tensao_inicial(self):
         return (self.z0 * self.vs) / (self.zs + self.z0)
@@ -37,9 +36,7 @@ class TransitoriosDegrau:
     def tensoes_transiente(self, ciclos=4):
         tensao0 = self.calculo_tensao_linha()
         vetor_taus = [1]
-        ciclos_decorridos = [
-            self.calculo_tempo_transito() * i for i in range(1, ciclos + 1)
-        ]
+
         for i in range(ciclos):
             if not i % 2:
                 vetor_taus.append(vetor_taus[-1] * self.calculo_tau_l())

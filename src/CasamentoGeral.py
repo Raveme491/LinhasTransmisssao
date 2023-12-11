@@ -6,7 +6,7 @@ from SmithChart import SmithChart
 
 
 class CasamentoCapacitorIndutor:
-    def __init__(self, zl, z0, frequencia=None, comprimento=1) -> None:
+    def __init__(self, zl, z0, frequencia, comprimento=1) -> None:
         self.carta = SmithChart(zl, z0, comprimento)
         self.frequencia = frequencia
         self.z0 = z0
@@ -93,12 +93,11 @@ class CasamentoCapacitorIndutor:
         print('----INDUTOR----')
         print(f'Distância em relação a carga indutor: ', results[2][1])
         print(f'Impedância do Indutor: ', abs(results[3][0]))
-        print(f'Indutância: ', results[4][0])
+        print(f'Indutância: ', results[4][1])
 
 
 if __name__ == '__main__':
     transformador = CasamentoCapacitorIndutor(
         z0=100, zl=35 - 50j, frequencia=1e9
     )
-    print(transformador.casamento_impedancia())
     transformador.print_casamento()
